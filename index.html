@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message For You!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="step active" id="step1">
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="envelope-front"></div>
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step2">
+        <div class="letter-container" id="letterContainer">
+            <div class="letter">
+                <p>A small message is waiting for you...</p>
+                <button id="unfold-button">Unfold</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="step" id="step3">
+        <div class="final-card-container">
+            <audio id="music" src="your-music.mp3"></audio>
+            <h1 class="greeting" id="greetingText"></h1>
+            <h2 class="name">tanvee💚</h2>
+            <p class="wish-message">So yeah… this is just a normal birthday wish🤧🤧🎀</p>
+
+            <p>Out of all the random people in this world, I somehow got you as my best friend… and honestly, that’s one of the best things that ever happened to me.</p>
+            <p>From useless talks to serious life discussions, from laughing at nothing to supporting each other in everything… we’ve done it all.</p>
+            <p>You’re amazing, dramatic, sometimes impossible… but still my favorite person 🫠🎀</p>
+            <p>Thanks for always being there — even when I’m not at my best.</p>
+            <p>Thanks for understanding things I never even say.</p>
+            <p>And thanks for making life a little less boring and a lot more fun.</p>
+            <p>No matter where life takes us, one thing is fixed — I’ll always be there for you.</p>
+            <p>So stay the same mature, real, and amazing person you are.</p>
+            <p>thank you for being my best friend in my life even when i am not good for being a friend, super superrrrrrrrr thanksssss🎀🎀<p>
+            <p>Happy Birthday, tanvee 💖</p>
+            <p>— Your best friend 😌</p>
+
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip2"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+
+            <!-- 🎁 Surprise Button (ADDED) -->
+            <button id="surpriseBtn" style="
+                margin-top:10px;
+                padding:12px 25px;
+                border:none;
+                background:#ff69b4;
+                color:white;
+                border-radius:25px;
+                cursor:pointer;
+                font-size:16px;
+                box-shadow:0 0 10px rgba(255,105,180,0.6);
+            ">
+                🎁
+            </button>
+
+        </div>
+    </div>
+
+    <!-- 🌌 Overlay (ADDED) -->
+    <div id="overlay" style="
+        position:fixed;
+        top:10;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.85);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        z-index:880;
+    ">
+
+        <canvas id="confetti"></canvas>
+
+        <h1 id="typingText" style="
+            color:white;
+            font-size:26px;
+            text-align:center;
+            padding:20px;
+            white-space:pre-line;
+        "></h1>
+
+    </div>
+
+    <!-- 🎶 Music (ADDED) -->
+
+    <script src="script.js"></script>
+</body>
+</html>

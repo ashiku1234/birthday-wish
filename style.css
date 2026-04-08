@@ -1,0 +1,326 @@
+/* CSS RESET & FONT IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #1a1a2e;
+    --primary-color: #e94560;
+    --secondary-color: #0f3460;
+    --accent-color: #f0e68c;
+    --text-color: #ffffff;
+    --envelope-color: #f0f0f0;
+    --envelope-flap-color: #e0e0e0;
+    --letter-color: #fffaf0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, var(--bg-color), var(--secondary-color));
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+/* CONTAINER STYLING */
+.step {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.step.active {
+    display: flex;
+}
+
+/* ===== STEP 1: ENVELOPE ===== */
+.envelope-container {
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--envelope-color);
+    border-radius: 10px;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: var(--envelope-flap-color);
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--envelope-color);
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 100%, 100% 100%, 100% 50%, 50% 100%, 0 50%);
+}
+
+.envelope-seal {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2U5NDU2MCI+PHBhdGggZD0iTTEyIDIuMWMyLjIgMCA0LjIgMS4xIDUuMyAyLjlsLjYuOWMtLjkgMS4yLTIuMSAyLTMuMyAyLTEuMyAwLTIuNS0uOC0zLjQtMi0uOSAxLjEtMi4xIDItMy40IDJzLTIuNC0uOS0zLjItMmwuNS0uN0M3LjggMy4yIDkuOCAyLjEgMTIgMi4xbTAgMWMtMi41IDAtNC43IDEuMi02IDNjLTEuMiAxLjctMS44IDMuNy0xLjggNS43IDAgMi4xLjYgNC4xIDEuOCA1LjcgMS4yIDEuOCA0LjYgMyA2IDNzNC43LTEuMiA2LTNjMS4yLTEuNyAxLjgtMy43IDEuOC01LjcgMC0yLjEtLjYtNC4xLTEuOC01LjctMS4zLTEuOC0zLjUtMy02LTNtMCAxN2MtMy4zIDAtNS41LTEuNy02LjUtMy4yLTEtMS41LTEuNS0zLjQtMS41LTUuMiAwLTEuOS41LTMuOCAxLjUtNS4yIDEuMS0xLjYgMy4yLTMuMiA2LjUtMy4yIDMuMyAwIDUuNSAxLjcgNi41IDMuMiAxIDEuNSAxLjUgMy40IDEuNSA1LjIgMCAxLjktLjUgMy44LTEuNSA1LjItMS4xIDEuNS0zLjIgMy4yLTYuNSAzLjIiLz48L3N2Zz4=');
+    background-size: cover;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ===== STEP 2: LETTER ===== */
+.letter-container {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s 0.5s ease, transform 0.5s 0.5s ease;
+}
+
+.letter-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letter {
+    width: 320px;
+    max-width: 90vw;
+    background-color: var(--letter-color);
+    color: var(--bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.letter p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#unfold-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#unfold-button:hover {
+    background-color: #c73049;
+}
+
+/* ===== STEP 3: FINAL CARD ===== */
+.final-card-container {
+    animation: fadeIn 1s ease-in-out;
+    max-width: 90%;
+    text-align: center;
+}
+
+.greeting {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.name {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    background-color: var(--accent-color);
+    width: 3px;
+    animation: blink 1s step-end infinite;
+    margin-left: 5px;
+}
+
+.wish-message {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    max-width: 600px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes blink {
+    from, to { background-color: transparent }
+    50% { background-color: var(--accent-color); }
+}
+
+/* ===== CAKE & BALLOONS ===== */
+.cake {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 30px auto 20px;
+}
+.plate { width: 270px; height: 20px; background-color: #ccc; position: absolute; bottom: 40px; left: -10px; border-radius: 50%; }
+.layer { position: absolute; width: 250px; height: 50px; background-color: #553c13; border-radius: 50% / 25%; }
+.layer-bottom { bottom: 50px; } .layer-middle { bottom: 80px; } .layer-top { bottom: 110px; }
+.icing { position: absolute; width: 250px; height: 30px; background-color: white; bottom: 140px; border-radius: 50% / 25%; }
+.drip { position: absolute; width: 20px; height: 30px; background: white; border-radius: 50%; top: 10px; }
+.drip1 { left: 30px; } .drip2 { left: 115px; height: 40px; } .drip3 { left: 200px; }
+.candle { position: absolute; width: 10px; height: 40px; background-color: var(--primary-color); bottom: 160px; left: 50%; transform: translateX(-50%); border-radius: 5px 5px 0 0; }
+.flame { position: absolute; width: 10px; height: 15px; background-color: orange; top: -15px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; animation: flicker 1s infinite; }
+@keyframes flicker { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.8); opacity: 0.8; } }
+
+.balloon {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    bottom: -100px;
+    opacity: 0.7;
+    animation: rise 10s linear infinite;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 50px;
+    background-color: #fff;
+    left: 50%;
+    top: 60px;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh);
+    }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+    .name { font-size: 3rem; }
+    .wish-message { font-size: 1rem; }
+    .cake { transform: scale(0.8); }
+}
+
+/* ========================= */
+/* 🎁 SURPRISE FEATURE FIXES */
+/* ========================= */
+
+/* 🎁 Button */
+#surpriseBtn {
+    position: fixed;   /* 🔥 THIS is the key */
+    bottom: 30px;
+    right: 30px;
+
+    padding: 12px 28px;
+    border: none;
+    background: linear-gradient(45deg, #ff4da6, #ff85c1);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 77, 166, 0.6);
+    z-index: 1000;
+}
+
+#surpriseBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 77, 166, 0.9);
+}
+
+/* 🌌 Overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+}
+
+/* ✨ Confetti behind text */
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 📝 Text on top */
+#typingText {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    padding: 20px;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+/* 📱 Mobile fix */
+@media (max-width: 600px) {
+    #typingText {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    #surpriseBtn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}

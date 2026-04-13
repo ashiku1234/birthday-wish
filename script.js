@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Typing effect (new message)
-    const message = "You’re stuck with me forever 😛🎀\nHappy Birthday tanvee my friend🫠🎀\nI'm gonna be little dramtic like an old uncle \n but 'meri umar tumhe lag jaye🤧🎀'";
+    const message = "You’re stuck with me forever 😛🎀\nHappy Birthday tanvee my friend🫠🎀\nTum jitni achhi hai na, utni hi khushiyan tumhe mile. Always stay the same, please\nTum honestly bohot achhi dost ho I’m really lucky ki tum meri life mein ho\nSabko tumhare jaisa genuine aur kind insaan nahi milta Don’t ever change/happy birthday cutie😛🎀🎀🎀";
 
     function typeMessage() {
     if (!typingText) return;
